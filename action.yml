@@ -1,5 +1,5 @@
-name: "Snitch for GitHub"
-description: "License-gated security audit on every pull request. Customer code never leaves your runner."
+name: "Snitch GitHub Action"
+description: "Security review on every pull request. Free with GitHub Models, or bring your own AI provider key. Sticky PR comment + SARIF upload."
 author: "Snitch (snitchplugin.com)"
 
 branding:
@@ -17,20 +17,21 @@ inputs:
     default: ${{ github.token }}
 
   openrouter-api-key:
-    description: "OpenRouter API key. One of (openrouter|anthropic|openai|google|copilot)-* keys is required."
+    description: "OpenRouter API key. Pay-per-token, one key for every model. Optional — only needed if you set `model:` to something other than the GitHub Models default."
     required: false
   anthropic-api-key:
-    description: "Anthropic API key."
+    description: "Anthropic API key. Optional — used when `provider: anthropic` or when no other key is present."
     required: false
   openai-api-key:
-    description: "OpenAI API key."
+    description: "OpenAI API key. Optional — used when `provider: openai` or when no other key is present."
     required: false
   google-api-key:
-    description: "Google AI Studio API key (Gemini)."
+    description: "Google AI Studio API key (Gemini). Optional — used when `provider: google` or when no other key is present."
     required: false
   copilot-token:
-    description: "GitHub Copilot OAuth token (requires active Copilot subscription)."
+    description: "Token for the GitHub Models inference endpoint. Defaults to the workflow's GITHUB_TOKEN, which gives you a free tier when the workflow declares `permissions: models: read`. Override with a Copilot subscription token or a PAT for a higher rate limit."
     required: false
+    default: ${{ github.token }}
 
   trigger-mode:
     description: "When to run: smart | always | manual. Default smart. Can be overridden by .snitch.yml."

@@ -53,6 +53,10 @@ inputs:
   paths:
     description: "Comma-separated glob filters. Files matching these globs are scanned; others are skipped."
     required: false
+  sarif-output-path:
+    description: "Where to write the SARIF report on the runner. Use this when a downstream step (codeql-action/upload-sarif, custom upload, etc.) expects the file at a specific path. Parent directories are created if needed."
+    required: false
+    default: "SECURITY_AUDIT_REPORT.sarif"
 
 outputs:
   findings-count:

@@ -65,6 +65,10 @@ inputs:
     description: "How many files to send to the AI provider per call. Default 5. Smaller batches give more accurate findings on large diffs but take longer; larger batches are faster but the model may hurry. Override per-workflow if needed."
     required: false
     default: "5"
+  disable-inline-review:
+    description: "Set to 'true' to skip posting inline review comments on the PR diff. Useful when GitHub Advanced Security is enabled — Code Scanning already renders SARIF findings on the diff, so the inline comments duplicate them. The sticky summary comment + SARIF upload + artifact still run."
+    required: false
+    default: "false"
 
 outputs:
   findings-count:

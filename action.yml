@@ -57,6 +57,14 @@ inputs:
     description: "Where to write the SARIF report on the runner. Use this when a downstream step (codeql-action/upload-sarif, custom upload, etc.) expects the file at a specific path. Parent directories are created if needed."
     required: false
     default: "SECURITY_AUDIT_REPORT.sarif"
+  markdown-output-path:
+    description: "Where to write the human-readable Markdown report. Same file is also dumped into the workflow log and the GitHub Actions Job Summary. Parent directories are created if needed."
+    required: false
+    default: "SECURITY_AUDIT_REPORT.md"
+  batch-size:
+    description: "How many files to send to the AI provider per call. Default 5. Smaller batches give more accurate findings on large diffs but take longer; larger batches are faster but the model may hurry. Override per-workflow if needed."
+    required: false
+    default: "5"
 
 outputs:
   findings-count:

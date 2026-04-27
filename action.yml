@@ -77,6 +77,10 @@ inputs:
     description: "Set to 'true' to skip posting inline review comments on the PR diff. Useful when GitHub Advanced Security is enabled — Code Scanning already renders SARIF findings on the diff, so the inline comments duplicate them. The sticky summary comment + SARIF upload + artifact still run."
     required: false
     default: "false"
+  include-dependencies:
+    description: "Run software composition analysis (SCA) on dependency manifests in the same scan: package-lock.json, requirements.txt, Cargo.lock, Gemfile.lock, go.sum, pom.xml, composer.lock, packages.lock.json. Vulnerable versions are queried against OSV.dev (free, no key) and reported as findings alongside the AI code review. Set to 'false' to disable."
+    required: false
+    default: "true"
 
 outputs:
   findings-count:

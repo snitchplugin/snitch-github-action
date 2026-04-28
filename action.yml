@@ -85,6 +85,10 @@ inputs:
     description: "Run dead-code analysis: flag dependencies declared in manifests but never imported in source, and source files that no other file imports (JS/TS + Python). Deterministic, runs alongside SCA + the AI review. Set to 'false' to disable."
     required: false
     default: "true"
+  include-iac:
+    description: "Run infrastructure-as-code misconfiguration scan on Terraform (*.tf), CloudFormation (yaml/json), Kubernetes manifests, and Dockerfiles. 15+ high-signal rules: public S3 buckets, IAM wildcards, K8s containers running as root, hardcoded AWS keys in TF, etc. Deterministic, no cloud credentials needed. Set to 'false' to disable."
+    required: false
+    default: "true"
 
 outputs:
   findings-count:

@@ -81,6 +81,10 @@ inputs:
     description: "Run software composition analysis (SCA) on dependency manifests in the same scan: package-lock.json, requirements.txt, Cargo.lock, Gemfile.lock, go.sum, pom.xml, composer.lock, packages.lock.json. Vulnerable versions are queried against OSV.dev (free, no key) and reported as findings alongside the AI code review. Set to 'false' to disable."
     required: false
     default: "true"
+  include-dead-code:
+    description: "Run dead-code analysis: flag dependencies declared in manifests but never imported in source, and source files that no other file imports (JS/TS + Python). Deterministic, runs alongside SCA + the AI review. Set to 'false' to disable."
+    required: false
+    default: "true"
 
 outputs:
   findings-count:
